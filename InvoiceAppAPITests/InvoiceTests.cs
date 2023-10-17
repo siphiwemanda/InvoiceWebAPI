@@ -4,150 +4,32 @@ namespace InvoiceAppAPITests;
 
 public class InvoiceTests
 {
-    [Fact]
-    public void InvoiceHasId()
+    private Invoice getTestInvoice()
     {
-        var firstInvoice = new Invoice
+        return new Invoice 
         {
-            Id = "RT3080"
-        };
-        Assert.Equal("RT3080", firstInvoice.Id);
-    }
-    
-    [Fact]
-    public void InvoiceHasCreatedAt()
-    {
-        var firstInvoice = new Invoice
-        {
-            CreatedAt = "2021-08-18"
-        };
-        Assert.Equal("2021-08-18", firstInvoice.CreatedAt);
-    }
-    [Fact]
-    public void InvoiceHasOtherStringValues()
-    {
-        var firstInvoice = new Invoice
-        {
-            Description = "Re-branding",
-            ClientName = "Jensen Huang",
-            ClientEmail = "jensenh@mail.com",
-            Status = "paid"
-        };
-        Assert.Equal("Re-branding", firstInvoice.Description);
-        Assert.Equal("Jensen Huang", firstInvoice.ClientName);
-        Assert.Equal("jensenh@mail.com", firstInvoice.ClientEmail);
-        Assert.Equal("paid", firstInvoice.Status);
-    }
-    [Fact]
-    public void InvoiceHasPaymentTerms()
-    {
-        var firstInvoice = new Invoice
-        {
-            PaymentTerms = 1
-        };
-        Assert.Equal(1, firstInvoice.PaymentTerms);
-    }
-    [Fact]
-    public void InvoiceHasTotal()
-    {
-        var firstInvoice = new Invoice
-        {
-            Total = 1800.90
-        };
-        Assert.Equal(1800.90, firstInvoice.Total);
-    }
-    
-    [Fact]
-    public void InvoiceHasAllTopLevelValues()
-    {
-        var firstInvoice = new Invoice
-        {
+            Id = "RT3080",
+            CreatedAt = "2021-08-18",
             Description = "Re-branding",
             ClientName = "Jensen Huang",
             ClientEmail = "jensenh@mail.com",
             Status = "paid",
-            Total = 1800.90,
             PaymentTerms = 1,
-            CreatedAt = "2021-08-18",
-            Id = "RT3080"
-        };
-        Assert.Equal("Re-branding", firstInvoice.Description);
-        Assert.Equal("Jensen Huang", firstInvoice.ClientName);
-        Assert.Equal("jensenh@mail.com", firstInvoice.ClientEmail);
-        Assert.Equal("paid", firstInvoice.Status);
-        Assert.Equal(1800.90, firstInvoice.Total);
-        Assert.Equal(1, firstInvoice.PaymentTerms);
-        Assert.Equal("2021-08-18", firstInvoice.CreatedAt);
-        Assert.Equal("RT3080", firstInvoice.Id);
-    }
-    
-    [Fact]
-    public void SenderAddressCreationTest()
-    {
-        var senderAddress = new Address
-        {
-            Street = "19 Union Terrace",
-            City = "London",
-            PostCode = "E1 3EZ",
-            Country = "United Kingdom"
-        };
-        Assert.Equal("19 Union Terrace", senderAddress.Street);
-        Assert.Equal("London", senderAddress.City);
-        Assert.Equal("E1 3EZ", senderAddress.PostCode);
-        Assert.Equal("United Kingdom", senderAddress.Country);
-    }
-    [Fact]
-    public void InvoiceSenderAddressCreationTest()
-    {
-        var firstInvoice = new Invoice
-        {
-            SenderAddress = new Address{
+            Total = 1800.90,
+            SenderAddress = new Address
+            {
                 Street = "19 Union Terrace",
                 City = "London",
                 PostCode = "E1 3EZ",
-                Country = "United Kingdom"}
-        };
-        Assert.Equal("19 Union Terrace", firstInvoice.SenderAddress.Street);
-        Assert.Equal("London", firstInvoice.SenderAddress.City);
-        Assert.Equal("E1 3EZ", firstInvoice.SenderAddress.PostCode);
-        Assert.Equal("United Kingdom", firstInvoice.SenderAddress.Country);
-    }
-    [Fact]
-    public void InvoiceClientAddressCreationTest()
-    {
-        var firstInvoice = new Invoice
-        {
-            ClientAddress = new Address{
+                Country = "United Kingdom"
+            },
+            ClientAddress = new Address
+            {
                 Street = "106 Kendell Street",
                 City = "Sharrington",
                 PostCode = "NR24 5WQ",
-                Country = "United Kingdom"}
-        };
-        Assert.Equal("106 Kendell Street", firstInvoice.ClientAddress.Street);
-        Assert.Equal("Sharrington", firstInvoice.ClientAddress.City);
-        Assert.Equal("NR24 5WQ", firstInvoice.ClientAddress.PostCode);
-        Assert.Equal("United Kingdom", firstInvoice.ClientAddress.Country);
-    }
-    [Fact]
-    public void ItemCreationTest()
-    {
-        var item = new Item()
-        {
-            Name = "Brand Guidelines",
-            Quantity = 1,
-            Price = 1800.90,
-            Total = 1800.90
-        };
-        Assert.Equal("Brand Guidelines", item.Name);
-        Assert.Equal(1, item.Quantity);
-        Assert.Equal(1800.90, item.Price);
-        Assert.Equal(1800.90,item.Total);
-    }
-    [Fact]
-    public void InvoiceItemCreationTest()
-    {
-        var invoice = new Invoice
-        {
+                Country = "United Kingdom"
+            },
             Items = new List<Item>
             {
                 new()
@@ -156,12 +38,69 @@ public class InvoiceTests
                     Quantity = 1,
                     Price = 1800.90,
                     Total = 1800.90
+                },
+                new ()
+                {
+                    Name ="Email Design",
+                    Quantity = 2,
+                    Price = 200.00,
+                    Total = 400.00
                 }
             }
         };
-        Assert.Equal("Brand Guidelines", invoice.Items[0].Name);
-        Assert.Equal(1, invoice.Items[0].Quantity);
-        Assert.Equal(1800.90, invoice.Items[0].Price);
-        Assert.Equal(1800.90,invoice.Items[0].Total);
+    }
+    
+    [Theory]
+    [InlineData("RT3080","2021-08-18", "Re-branding", "Jensen Huang", "jensenh@mail.com",
+        "paid", 1, 1800.90)]
+    public void TestCreateInvoice(string expectedId, string expectedCreatedAt, string expectedDescription, 
+        string expectedClientName, string expectedClientEmail, string expectedStatus,int expectedPaymentTerms, double expectedTotal)
+    {
+        var invoice = getTestInvoice();
+        
+        Assert.Equal(expectedId, invoice.Id);
+        Assert.Equal(expectedCreatedAt, invoice.CreatedAt);
+        Assert.Equal(expectedDescription, invoice.Description);
+        Assert.Equal(expectedClientName, invoice.ClientName);
+        Assert.Equal(expectedClientEmail, invoice.ClientEmail);
+        Assert.Equal(expectedStatus, invoice.Status);
+        Assert.Equal(expectedPaymentTerms, invoice.PaymentTerms);
+        Assert.Equal(expectedTotal, invoice.Total);
+    }
+    [Fact]
+    public void InvoiceSenderAddressCreationTest()
+    {
+        var invoice = getTestInvoice();
+        Assert.Equal("19 Union Terrace", invoice.SenderAddress.Street);
+        Assert.Equal("London", invoice.SenderAddress.City);
+        Assert.Equal("E1 3EZ", invoice.SenderAddress.PostCode);
+        Assert.Equal("United Kingdom", invoice.SenderAddress.Country);
+    }
+    [Fact]
+    public void InvoiceClientAddressCreationTest()
+    {
+        var invoice = getTestInvoice();
+        Assert.Equal("106 Kendell Street", invoice.ClientAddress.Street);
+        Assert.Equal("Sharrington", invoice.ClientAddress.City);
+        Assert.Equal("NR24 5WQ", invoice.ClientAddress.PostCode);
+        Assert.Equal("United Kingdom", invoice.ClientAddress.Country);
+    }
+
+    [Theory]
+    [InlineData("Brand Guidelines", 1, 1800.90, 1800.90, 0)]
+    [InlineData("Email Design", 2, 200.00, 400.00, 1)]
+    public void ItemCreationTest(string expectedName, int expectedQuntity, double expectedPrice, double expectedTotal, int arrayPointer)
+    {
+        var invoice = getTestInvoice();
+        Assert.Equal(expectedName, invoice.Items[arrayPointer].Name);
+        Assert.Equal(expectedQuntity, invoice.Items[arrayPointer].Quantity);
+        Assert.Equal(expectedPrice, invoice.Items[arrayPointer].Price);
+        Assert.Equal(expectedTotal,invoice.Items[arrayPointer].Total);
+    }
+    [Fact]
+    public void testbla()
+    {
+    
+
     }
 }
