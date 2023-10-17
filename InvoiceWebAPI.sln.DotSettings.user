@@ -1,0 +1,18 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d3303bc2_002Deb97_002D448a_002Da204_002D1c8f7687fce2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="InvoiceHasID #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::CB8B5DB4-6424-43BB-93E3-B6990AE53FFE::net6.0::InvoiceAppAPITests.UnitTest1.InvoiceHasID&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d87350d4_002D05cd_002D4e67_002Db2d5_002De89cce393041/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="InvoiceHasID" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::CB8B5DB4-6424-43BB-93E3-B6990AE53FFE::net6.0::InvoiceAppAPITests.UnitTest1.InvoiceHasID&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9cb8db0_002D2917_002D40eb_002D8856_002Dc86e4639ff3f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="InvoiceHasID #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::CB8B5DB4-6424-43BB-93E3-B6990AE53FFE::net6.0::InvoiceAppAPITests.InvoiceTests.SenderAddressCreationTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::CB8B5DB4-6424-43BB-93E3-B6990AE53FFE::net6.0::InvoiceAppAPITests.InvoiceTests.InvoiceSenderAddressCreationTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::CB8B5DB4-6424-43BB-93E3-B6990AE53FFE::net6.0::InvoiceAppAPITests.InvoiceTests.InvoiceClientAddressCreationTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

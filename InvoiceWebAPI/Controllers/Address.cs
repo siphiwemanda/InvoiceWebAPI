@@ -1,6 +1,6 @@
 ﻿namespace InvoiceWebAPI.Controllers;
 
-public class SenderAddress
+public class Address
 {
     public string Street { get; set; }
     public string City { get; set; }

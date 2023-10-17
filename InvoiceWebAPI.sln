@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceWebAPI", "InvoiceWebAPI\InvoiceWebAPI.csproj", "{8C1A3EFC-5019-40A6-B21A-0204A8BD1D1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceAppAPITests", "InvoiceAppAPITests\InvoiceAppAPITests.csproj", "{CB8B5DB4-6424-43BB-93E3-B6990AE53FFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8C1A3EFC-5019-40A6-B21A-0204A8BD1D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C1A3EFC-5019-40A6-B21A-0204A8BD1D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C1A3EFC-5019-40A6-B21A-0204A8BD1D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB8B5DB4-6424-43BB-93E3-B6990AE53FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB8B5DB4-6424-43BB-93E3-B6990AE53FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB8B5DB4-6424-43BB-93E3-B6990AE53FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB8B5DB4-6424-43BB-93E3-B6990AE53FFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
