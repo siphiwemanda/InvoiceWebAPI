@@ -128,4 +128,40 @@ public class InvoiceTests
         Assert.Equal("NR24 5WQ", firstInvoice.ClientAddress.PostCode);
         Assert.Equal("United Kingdom", firstInvoice.ClientAddress.Country);
     }
+    [Fact]
+    public void ItemCreationTest()
+    {
+        var item = new Item()
+        {
+            Name = "Brand Guidelines",
+            Quantity = 1,
+            Price = 1800.90,
+            Total = 1800.90
+        };
+        Assert.Equal("Brand Guidelines", item.Name);
+        Assert.Equal(1, item.Quantity);
+        Assert.Equal(1800.90, item.Price);
+        Assert.Equal(1800.90,item.Total);
+    }
+    [Fact]
+    public void InvoiceItemCreationTest()
+    {
+        var invoice = new Invoice
+        {
+            Items = new List<Item>
+            {
+                new()
+                {
+                    Name = "Brand Guidelines",
+                    Quantity = 1,
+                    Price = 1800.90,
+                    Total = 1800.90
+                }
+            }
+        };
+        Assert.Equal("Brand Guidelines", invoice.Items[0].Name);
+        Assert.Equal(1, invoice.Items[0].Quantity);
+        Assert.Equal(1800.90, invoice.Items[0].Price);
+        Assert.Equal(1800.90,invoice.Items[0].Total);
+    }
 }

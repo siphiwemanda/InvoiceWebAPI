@@ -12,4 +12,5 @@ public class Invoice
     public double Total { get; set; }
     public Address SenderAddress { get; set; }
     public Address ClientAddress { get; set; }
+    public List<Item> Items { get; set; }
 }
