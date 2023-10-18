@@ -8,12 +8,16 @@
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Domain\InvoiceData.json" />
+      <Content Remove="Domain\InvoiceDataMultipleExceptionFail.json" />
       <EmbeddedResource Include="Domain\InvoiceData.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Domain\InvoiceDataMultipleExceptionFail.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>

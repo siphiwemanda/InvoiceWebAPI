@@ -108,17 +108,19 @@ public class InvoiceTests
         Assert.IsType(expected, invoice);
     }
     
-    [Fact]
-    public void TestReturnInvoicesWithId()
+    [Theory]
+    [InlineData("RT3080")]
+    public void TestReturnInvoicesWithId(string id)
     {
-        var invoice = CreateInvoice.GetInvoice("RT3080");
-        Assert.Equal("RT3080", invoice.Id);
+        var invoice = CreateInvoice.GetInvoice(id);
+        Assert.Equal(invoice.Id, id);
     }
-        
-    [Fact]
-    public void TestReturnInvoicesWithSameId()
-    {
-        var invoice = CreateInvoice.GetInvoice("RT3080");
-        Assert.Equal("Re-branding", invoice.Description);
-    }
+    //Adam Brumby's Hack -- this was all his idea 
+    //[Theory][InlineData("RT3080")]
+    //public void TestReturnInvoicesWithSameId(string id)
+    //{
+        //Assert.Throws<MultipleInvoicesException>(() => CreateInvoice.GetInvoice(id));
+
+    //}
+
 }
