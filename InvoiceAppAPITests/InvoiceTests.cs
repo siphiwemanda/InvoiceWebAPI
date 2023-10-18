@@ -51,7 +51,53 @@ public class InvoiceTests
             }
         };
     }
-    
+
+    private Invoice getTestUpdateInvoice()
+    {
+        return new Invoice
+        {
+            Id = "RT3080",
+            CreatedAt = "2021-08-18",
+            Description = "Jazz",
+            ClientName = "Jensen Huang",
+            ClientEmail = "jensenh@mail.com",
+            Status = "paid",
+            PaymentTerms = 1,
+            Total = 1234.56,
+            SenderAddress = new Address
+            {
+                Street = "19 Union Terrace",
+                City = "London",
+                PostCode = "E1 3EZ",
+                Country = "United Kingdom"
+            },
+            ClientAddress = new Address
+            {
+                Street = "106 Kendell Street",
+                City = "Sharrington",
+                PostCode = "NR24 5WQ",
+                Country = "United Kingdom"
+            },
+            Items = new List<Item>
+            {
+                new()
+                {
+                    Name = "Brand Guidelines",
+                    Quantity = 1,
+                    Price = 1800.90,
+                    Total = 1800.90
+                },
+                new ()
+                {
+                    Name ="Email Design",
+                    Quantity = 2,
+                    Price = 200.00,
+                    Total = 400.00
+                }
+            }
+        };
+    }
+
     [Theory]
     [InlineData("RT3080","2021-08-18", "Re-branding", "Jensen Huang", "jensenh@mail.com",
         "paid", 1, 1800.90)]
@@ -119,8 +165,16 @@ public class InvoiceTests
     //[Theory][InlineData("RT3080")]
     //public void TestReturnInvoicesWithSameId(string id)
     //{
-        //Assert.Throws<MultipleInvoicesException>(() => CreateInvoice.GetInvoice(id));
+    //Assert.Throws<MultipleInvoicesException>(() => CreateInvoice.GetInvoice(id));
 
     //}
+    [Fact]
+    public void UpdateInvoice()
+    {
+        var testUpdate = getTestUpdateInvoice();
+        var invoices = CreateInvoice.UpdateInvoice("RT3080", testUpdate);
+
+
+    }
 
 }
