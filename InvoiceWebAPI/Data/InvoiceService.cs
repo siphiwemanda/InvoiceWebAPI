@@ -11,14 +11,9 @@ namespace InvoiceWebAPI.Data
         public InvoicesService(
             IOptions<InvoiceDatabaseSettings> invoiceDatabaseSettings)
         {
-            var mongoClient = new MongoClient(
-                invoiceDatabaseSettings.Value.ConnectionString);
-
-            var mongoDatabase = mongoClient.GetDatabase(
-                invoiceDatabaseSettings.Value.DatabaseName);
-
-            _invoiceCollection = mongoDatabase.GetCollection<Invoice>(
-                invoiceDatabaseSettings.Value.InvoiceCollectionName);
+            var mongoClient = new MongoClient(invoiceDatabaseSettings.Value.ConnectionString);
+            var mongoDatabase = mongoClient.GetDatabase(invoiceDatabaseSettings.Value.DatabaseName);
+            _invoiceCollection = mongoDatabase.GetCollection<Invoice>(invoiceDatabaseSettings.Value.InvoiceCollectionName);
         }
 
         public async Task<List<Invoice>> GetAsync() =>

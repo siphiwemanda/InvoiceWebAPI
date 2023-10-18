@@ -20,9 +20,12 @@ public class InvoiceController : ControllerBase
 
     }
 
-    //[Route("/{id}")]
-    // public Invoice GetById(int id)
-    // {
-    //     
-    // }
+    [HttpGet("{reference}")]
+    public async Task<ActionResult<Invoice>> GetById(string reference)
+    {
+
+        var invoices = await _invoicesService.GetAsync(reference);
+        return invoices;
+
+    }
 }
