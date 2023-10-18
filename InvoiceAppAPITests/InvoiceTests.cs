@@ -10,7 +10,7 @@ public class InvoiceTests
     {
         return new Invoice 
         {
-            Id = "RT3080",
+            Reference = "RT3080",
             CreatedAt = "2021-08-18",
             Description = "Re-branding",
             ClientName = "Jensen Huang",
@@ -56,7 +56,7 @@ public class InvoiceTests
     {
         return new Invoice
         {
-            Id = "RT3080",
+            Reference = "RT3080",
             CreatedAt = "2021-08-18",
             Description = "Jazz",
             ClientName = "Jensen Huang",
@@ -106,7 +106,7 @@ public class InvoiceTests
     {
         var invoice = getTestInvoice();
         
-        Assert.Equal(expectedId, invoice.Id);
+        Assert.Equal(expectedId, invoice.Reference);
         Assert.Equal(expectedCreatedAt, invoice.CreatedAt);
         Assert.Equal(expectedDescription, invoice.Description);
         Assert.Equal(expectedClientName, invoice.ClientName);
