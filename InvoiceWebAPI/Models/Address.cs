@@ -1,4 +1,4 @@
-﻿namespace InvoiceWebAPI.Controllers;
+﻿namespace InvoiceWebAPI.Models;
 
 public class Address
 {

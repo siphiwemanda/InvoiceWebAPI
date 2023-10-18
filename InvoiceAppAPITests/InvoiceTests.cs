@@ -1,4 +1,6 @@
 using InvoiceWebAPI.Controllers;
+using InvoiceWebAPI.Domain;
+using InvoiceWebAPI.Models;
 
 namespace InvoiceAppAPITests;
 
@@ -98,9 +100,25 @@ public class InvoiceTests
         Assert.Equal(expectedTotal,invoice.Items[arrayPointer].Total);
     }
     [Fact]
-    public void testbla()
+    public void TestReturnAllInvoices()
     {
+        var expected = typeof(List<Invoice>);
+        var invoice = CreateInvoice.GetInvoices();
+        Assert.IsType<List<Invoice>>(invoice);
+        Assert.IsType(expected, invoice);
+    }
     
-
+    [Fact]
+    public void TestReturnInvoicesWithId()
+    {
+        var invoice = CreateInvoice.GetInvoice("RT3080");
+        Assert.Equal("RT3080", invoice.Id);
+    }
+        
+    [Fact]
+    public void TestReturnInvoicesWithSameId()
+    {
+        var invoice = CreateInvoice.GetInvoice("RT3080");
+        Assert.Equal("Re-branding", invoice.Description);
     }
 }
