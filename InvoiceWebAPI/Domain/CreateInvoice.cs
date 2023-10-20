@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Text.Json;
 using InvoiceWebAPI.Models;
+using MongoDB.Driver.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -8,6 +9,13 @@ namespace InvoiceWebAPI.Domain;
 
 public class CreateInvoice
 {
+    public static Invoice Create(object newInvoice)
+    {
+        var invoice = JsonConvert.DeserializeObject<Invoice>(newInvoice.ToString());
+        invoice.Id = "sdfsdfsdf";
+        invoice.CreatedAt = DateTime.Now.ToString();
+        return invoice;
+    }
     //public static List<Invoice> GetInvoices()
     //{
     //    var path = Path.Combine(Directory.GetCurrentDirectory(), @$"Domain\InvoiceData.json");

@@ -1,5 +1,6 @@
 ﻿using InvoiceWebAPI.Data;
 using InvoiceWebAPI.Models;
+using InvoiceWebAPI.Domain;
 using Microsoft.AspNetCore.Mvc;
 namespace InvoiceWebAPI.Controllers;
 
@@ -31,11 +32,12 @@ public class InvoiceController : ControllerBase
         return invoices;
     }
     
-    [HttpPatch("{reference}")]
-    public async Task<ActionResult<Invoice>> CreateInvoice(string reference, Invoice invoice)
+    [HttpPost]
+    public async Task<ActionResult<Invoice>> GenerateInvoice(object newInvoice)
     {
-        await _invoicesService.UpdateAsync(reference, invoice);
-        var invoices = await _invoicesService.GetAsync(reference);
+        var invoice = CreateInvoice.Create(newInvoice);
+        //await _invoicesService.UpdateAsync(reference, invoice);
+        var invoices = await _invoicesService.GetAsync("dsfgkkdsf");
         return invoices;
     }
 }
